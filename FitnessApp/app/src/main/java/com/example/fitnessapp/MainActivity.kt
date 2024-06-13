@@ -1,77 +1,68 @@
 package com.example.fitnessapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.remember
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.fitnessapp.ui.theme.FitnessAppTheme
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.material3.Button
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            setContent {
-                MyApp {
-                    MenuScreen()
+        setContent {
+            FitnessApp()
+        }
+    }
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FitnessApp() {
+    FitnessAppTheme {
+        val navController = rememberNavController()
+
+        Scaffold(
+            topBar = {
+                val currentRoute = currentRoute(navController)
+                if (currentRoute != "menu") {
+                    TopAppBar(
+                        title = { Text("Fitness App") },
+                        navigationIcon = {
+                            IconButton(onClick = { navController.popBackStack() }) {
+                                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                            }
+                        }
+                    )
                 }
             }
-    }
-}
-
-
-@Composable
-fun MyApp(content: @Composable () -> Unit) {
-    MaterialTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
         ) {
-            content()
+            NavHost(navController = navController, startDestination = "menu") {
+                composable("menu") {
+                    MenuScreen(navController)
+                }
+                composable("lose_weight") {
+                    LoseWeightScreen(navController)
+                }
+                composable("gain_weight") {
+                    GainWeightScreen(navController)
+                }
+            }
         }
     }
 }
 
 @Composable
-fun MenuScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "O que deseja fazer?", fontSize = 32.sp, modifier = Modifier.padding(bottom = 32.dp))
-
-        Button(onClick = { /* Ação para o botão 1 */ }) {
-            Text("Perder Peso")
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = { /* Ação para o botão 2 */ }) {
-            Text("Ganhar Peso")
-        }
-    }
-}adasdada
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MyApp {
-        MenuScreen()
-    }
+fun currentRoute(navController: NavHostController): String? {
+    return navController.currentBackStackEntry?.destination?.route
 }
+
