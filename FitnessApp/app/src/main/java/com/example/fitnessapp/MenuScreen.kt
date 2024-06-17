@@ -29,5 +29,11 @@ fun MenuScreen(navController: NavController) {
         Button(onClick = { navController.navigate("gain_weight") }) {
             Text("Ganhar Peso")
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = { navController.navigate("imc") }) {
+            Text("Calculadora IMC")
+        }
     }
 }

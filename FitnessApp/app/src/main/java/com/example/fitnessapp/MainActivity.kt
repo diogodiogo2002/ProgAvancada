@@ -31,21 +31,7 @@ fun FitnessApp() {
     FitnessAppTheme {
         val navController = rememberNavController()
 
-        Scaffold(
-            topBar = {
-                val currentRoute = currentRoute(navController)
-                if (currentRoute != "menu") {
-                    TopAppBar(
-                        title = { Text("Fitness App") },
-                        navigationIcon = {
-                            IconButton(onClick = { navController.popBackStack() }) {
-                                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                            }
-                        }
-                    )
-                }
-            }
-        ) {
+
             NavHost(navController = navController, startDestination = "menu") {
                 composable("menu") {
                     MenuScreen(navController)
@@ -56,10 +42,13 @@ fun FitnessApp() {
                 composable("gain_weight") {
                     GainWeightScreen(navController)
                 }
+                composable("imc") {
+                    IMC(navController)
+                }
             }
-        }
     }
 }
+
 
 @Composable
 fun currentRoute(navController: NavHostController): String? {
