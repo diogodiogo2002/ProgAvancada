@@ -46,14 +46,19 @@ fun LoseWeightScreen(navController: NavController) {
                     .height(200.dp)
                     .padding(bottom = 32.dp)
             )
-            Text("TIPS FOR LOSING WEIGHT",
-                fontSize = 32.sp, // Using the custom fontSize modifier
-                fontWeight = FontWeight.Bold
-            )
+
             Spacer(modifier = Modifier.height(16.dp))
             Text("Dietary Tips",
                 fontSize = 24.sp, // Using the custom fontSize modifier
                 fontWeight = FontWeight.Bold)
+            Image(
+                painter = painterResource(id = R.drawable.dietalose),
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(bottom = 32.dp)
+            )
             Spacer(modifier = Modifier.height(16.dp))
             Text("Caloric Deficit")
             Text("Eat Whole Foods")
