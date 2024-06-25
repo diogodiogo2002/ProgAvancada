@@ -48,14 +48,19 @@ fun GainWeightScreen(navController: NavController) {
                     .height(200.dp)
                     .padding(bottom = 32.dp)
             )
-            Text("TIPS FOR GAINING WEIGHT",
-                fontSize = 32.sp, // Using the custom fontSize modifier
-                fontWeight = FontWeight.Bold
-            )
+
             Spacer(modifier = Modifier.height(16.dp))
             Text("Dietary Tips",
                 fontSize = 24.sp, // Using the custom fontSize modifier
                 fontWeight = FontWeight.Bold
+            )
+            Image(
+                painter = painterResource(id = R.drawable.dietagain),
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(bottom = 32.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text("Increase Caloric Intake")
