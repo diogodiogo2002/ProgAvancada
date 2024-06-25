@@ -1,5 +1,6 @@
 package com.example.fitnessapp
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IMC(navController: NavController) {
@@ -44,6 +47,14 @@ fun IMC(navController: NavController) {
                 },
 
                 )
+            Image(
+                painter = painterResource(id = R.drawable.formula),
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .padding(bottom = 32.dp)
+            )
 
         }
 
@@ -109,6 +120,8 @@ fun IMC(navController: NavController) {
             }
 
             Spacer(modifier = Modifier.height(16.dp))
+
+
 
             imc?.let {
                 Text(
