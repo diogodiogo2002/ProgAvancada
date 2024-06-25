@@ -37,7 +37,7 @@ fun BMI(navController: NavController) {
     CustomScaffold(navController = navController, showBackButton = true) {
         Column {
             TopAppBar(
-                title = { Text("Calculadora IMC") },
+                title = { Text("BMI Calculator") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -46,7 +46,7 @@ fun BMI(navController: NavController) {
 
                 )
             Image(
-                painter = painterResource(id = R.drawable.formula),
+                painter = painterResource(id = R.drawable.formula1),
                 contentDescription = "Logo",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -93,7 +93,7 @@ fun BMI(navController: NavController) {
             TextField(
                 value = height,
                 onValueChange = { height = it },
-                label = { Text("Height (cm)") },
+                label = { Text("Height (m)") },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
