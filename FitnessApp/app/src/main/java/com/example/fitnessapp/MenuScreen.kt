@@ -29,22 +29,22 @@ fun MenuScreen(navController: NavController) {
                 .height(200.dp)
                 .padding(bottom = 32.dp)
         )
-        Text(text = "O que deseja fazer?", modifier = Modifier.padding(bottom = 32.dp))
+        Text(text = "What are you looking for?", modifier = Modifier.padding(bottom = 32.dp))
 
         Button(onClick = { navController.navigate("lose_weight") }) {
-            Text("Perder Peso")
+            Text("Lose Weight")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = { navController.navigate("gain_weight") }) {
-            Text("Ganhar Peso")
+            Text("Gain Weight")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { navController.navigate("imc") }) {
-            Text("Calculadora IMC")
+        Button(onClick = { navController.navigate("bmi") }) {
+            Text("BMI Calculator")
         }
     }
 }

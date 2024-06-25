@@ -42,8 +42,8 @@ fun FitnessApp() {
                 composable("gain_weight") {
                     GainWeightScreen(navController)
                 }
-                composable("imc") {
-                    IMC(navController)
+                composable("bmi") {
+                    BMI(navController)
                 }
             }
     }
